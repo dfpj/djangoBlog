@@ -10,7 +10,7 @@ class Article(models.Model):
     title=models.CharField(max_length=200)
     slug=models.SlugField(max_length=100,unique=True)
     desc=models.TextField()
-    thumbnail=models.ImageField(upload_to="images")
+    thumbnail=models.ImageField(upload_to="media/images")
     publish=models.DateTimeField(default=timezone.now)
     created=models.DateTimeField(auto_now_add=True)
     update=models.DateTimeField(auto_now=True)
