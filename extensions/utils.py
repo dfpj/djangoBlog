@@ -26,4 +26,6 @@ def jalali_converter(time):
     day=persian_numbers_converter(str(time_to_tuple[0]))
     month=jmonths[time_to_tuple[1]-1]
     year=persian_numbers_converter(str(time_to_tuple[2]))
-    return f"زمان : {year}/{month}/{day}"
+    hour=persian_numbers_converter(str(time.hour))
+    minute=persian_numbers_converter(str(time.minute))
+    return f" انتشار : {year}/{month}/{day} , {hour}:{minute}"
