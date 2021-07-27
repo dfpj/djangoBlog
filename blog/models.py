@@ -1,3 +1,4 @@
+from extensions.utils import jalali_converter
 from django.db import models
 from django.utils import timezone
 
@@ -21,3 +22,8 @@ class Article(models.Model):
         verbose_name_plural="مقالات"
     def __str__(self) :
         return self.title
+
+    def jpublish(self):
+        return jalali_converter(self.publish)
+
+    jpublish.short_description="زمان انتشار"
