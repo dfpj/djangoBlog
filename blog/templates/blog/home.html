@@ -32,6 +32,12 @@
                         <h6 class="post-subtitle">{{article.desc|truncatewords:16}}</h6>
                         <p class="post-meta">
                             {{article.jpublish}}
+                            <div>
+                            {% for cat in article.category.all %}
+                             <a href="">{{cat.title}} </a>
+                            
+                            {% endfor %}
+                            </div>
                         </p>
                     </div>
                     <!-- Divider-->
