@@ -6,6 +6,11 @@ from django.utils import timezone
 # Create your models here.
 
 
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
+
+
 class Catergory(models.Model):
     title=models.CharField(max_length=200,verbose_name="عنوان دسته بندی")
     slug=models.SlugField(max_length=100,unique=True,verbose_name="آدرس دسته بندی")
@@ -27,7 +32,7 @@ class Catergory(models.Model):
 
 
 class Article(models.Model):
-    STATUS_CHICES=(
+    STATUS_CHOICES=(
         ('d','‍‍\یش نویس'),
         ('p','منتشر شده')
     )
@@ -39,7 +44,7 @@ class Article(models.Model):
     publish=models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار")
     created=models.DateTimeField(auto_now_add=True)
     update=models.DateTimeField(auto_now=True)
-    status=models.CharField(max_length=1,choices=STATUS_CHICES,verbose_name="وضعیت")
+    status=models.CharField(max_length=1,choices=STATUS_CHOICES,verbose_name="وضعیت")
     
     class Meta:
         verbose_name="مقاله"
@@ -55,3 +60,5 @@ class Article(models.Model):
 
     def category_published(self):
         return self.category.filter(status=True)
+
+    objects=ArticleManager()

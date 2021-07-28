@@ -20,6 +20,6 @@ class AricleAdmin(admin.ModelAdmin):
     ordering=['status','-publish']
 
     def category_to_str(self,obj):
-        return ",".join([category.title for category in obj.category.all()])
+        return ",".join([category.title for category in obj.category_published()])
     category_to_str.short_description="دسته بندی"
 admin.site.register(Article,AricleAdmin)
